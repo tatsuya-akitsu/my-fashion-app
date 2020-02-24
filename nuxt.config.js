@@ -1,9 +1,5 @@
 export default {
   mode: 'spa',
-
-  workbox: {
-    dev: true // 開発環境でもPWA
-  },
   head: {
     titleTemplate: '%s | 俺のファッション',
     meta: [
@@ -60,21 +56,26 @@ export default {
       }
     ]
   },
-
   loading: { color: '#fff' },
-
   css: [],
-
   plugins: ['@/plugins/moment'],
-
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/eslint-module'
+  ],
   modules: [
-    ['@nuxtjs/pwa', { icon: false }],
-    ['nuxt-sass-resources-loader', ['~/assets/scss/style.scss']],
+    ['@nuxtjs/dotenv'],
+    ['@nuxtjs/style-resources'],
     ['@nuxtjs/moment', ['ja']]
   ],
-
+  styleResources: {
+    sass: []
+  },
   build: {
     extend(config, ctx) {
+      config.node = {
+        fs: 'empty'
+      }
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({

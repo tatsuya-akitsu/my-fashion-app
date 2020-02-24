@@ -1,6 +1,6 @@
-import firebase from '@/plugins/firebase'
 import { E } from '../env'
 import { T } from './types'
+import firebase from '@/plugins/firebase'
 
 export const actions = {
   [T.FIREBASE_GET_PREFECTURE_DATA]({ commit }) {
@@ -8,8 +8,8 @@ export const actions = {
       .firestore()
       .collection('prefecture')
       .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
           commit(T.FIREBASE_GET_PREFECTURE_DATA, doc.data())
         })
       })
@@ -19,8 +19,8 @@ export const actions = {
       .firestore()
       .collection('cities')
       .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
           commit(T.FIREBASE_GET_CITIES_DATA, doc.data())
         })
       })
@@ -30,13 +30,13 @@ export const actions = {
   },
   [T.AJAX_GET_TRANSLATE_CITY]({ commit }, val) {
     fetch(E.AJAX_GET_TRANSLATE_CITY.replace('{city}', val))
-      .then(res => {
+      .then((res) => {
         return res.json()
       })
-      .then(data => {
+      .then((data) => {
         commit(T.AJAX_GET_TRANSLATE_CITY, data.city)
       })
-      .catch(error => {
+      .catch((error) => {
         // eslint-disable-next-line no-console
         console.log(error)
       })
@@ -49,15 +49,15 @@ export const actions = {
       ),
       { mode: 'cors' }
     )
-      .then(res => {
+      .then((res) => {
         return res.json()
       })
-      .then(data => {
+      .then((data) => {
         // eslint-disable-next-line no-console
         commit(T.AJAX_GET_WEATHER_DATA, data.list)
       })
       // eslint-disable-next-line handle-callback-err
-      .catch(error => {
+      .catch((error) => {
         commit(T.AJAX_GET_WEATHER_ERROR)
       })
   },

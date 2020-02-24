@@ -3,5 +3,5 @@ import moment from 'moment'
 
 moment.locale('ja')
 export default ({ app }, inject) => {
-  inject('moment', args => moment(args))
+  inject('moment', (args) => moment(args))
 }

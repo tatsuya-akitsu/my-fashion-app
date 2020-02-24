@@ -30,7 +30,7 @@ export const mutations = {
   [T.AJAX_GET_WEATHER_DATA](state, arr) {
     const _curDt = this.$moment()
     let _nearArr = []
-    _nearArr = arr.filter(item => _curDt.isBetween(item.dt_txt))
+    _nearArr = arr.filter((item) => _curDt.isBetween(item.dt_txt))
     state.weather = _nearArr.slice(-1)[0]
     state.isWeather = true
   },

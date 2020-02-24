@@ -1,14 +1,14 @@
 import firebase from 'firebase'
-import { E } from '../store/env'
+require('dotenv').config()
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
-    apiKey: E.API_KEY,
-    authDomain: E.AUTH_DOMAIN,
-    databaseURL: E.DATABASE_URL,
-    projectId: E.PROJECT_ID,
-    storageBucket: E.STORAGE_BUCKET,
-    messagingSenderId: E.MESSAGING_SENDER_ID
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID
   })
 }
 

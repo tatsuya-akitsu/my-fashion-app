@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     handleCity() {
-      this.cities = this.city.filter(item => item.en === this.selectPref)[0]
+      this.cities = this.city.filter((item) => item.en === this.selectPref)[0]
       return this.$store.dispatch(`global/${G.RESET_SELECT_PREFECTURE}`)
     },
     translateLabel() {

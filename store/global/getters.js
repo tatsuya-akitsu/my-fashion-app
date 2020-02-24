@@ -31,13 +31,13 @@ export const getters = {
     // タイトル追加
     _result.city = city
     // ユーザー体感温度追加
-    _result.temperature = temperature.filter(item => item.isSelect)[0]
+    _result.temperature = temperature.filter((item) => item.isSelect)[0]
     // 天気情報整形
     _weather = {
       temp_max: Math.floor(weather.main.temp_max),
       temp_min: Math.floor(weather.main.temp_min)
     }
-    weather.weather.map(item => {
+    weather.weather.map((item) => {
       _weather.weather = item
     })
     _result.weather = _weather
